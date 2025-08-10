@@ -4,3 +4,4 @@ Contact Form CFDB7
 Custom Post Type UI
 Yoast SEO
 WP REST API Menus
+WP Ultimate CSV Importer

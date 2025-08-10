@@ -3,16 +3,14 @@
 /**
  * Image Component Template with JS fallback
  */
+$default_image = 'http://localhost:8882/wp-content/uploads/2025/08/Window-Works-5.jpg';
 
-$src    = isset($args['src']) ? $args['src'] : '';
+$src    = !empty($args['src']) ? $args['src'] : $default_image;
 $alt    = isset($args['alt']) ? esc_attr($args['alt']) : '';
 $class  = isset($args['class']) ? esc_attr($args['class']) : '';
 $width  = isset($args['width']) ? intval($args['width']) : '';
 $height = isset($args['height']) ? intval($args['height']) : '';
-
-$default_image = get_stylesheet_directory_uri() . '/assets/img/global/header_logo.png';
 ?>
-
 <img
     loading="lazy"
     src="<?php echo esc_url($src); ?>"
