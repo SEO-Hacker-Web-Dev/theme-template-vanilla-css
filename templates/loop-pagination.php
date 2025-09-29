@@ -16,11 +16,7 @@ $excluded_post = [];
 if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post();
         $excluded_post[] = get_the_ID();
-        $default_image = 'http://localhost:8882/wp-content/uploads/2025/08/Window-Works-5.jpg';
         $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-        if (!$thumbnail_url) {
-            $thumbnail_url = $default_image;
-        }
 
         $blog_card_data = [
             'title'   => get_the_title(),

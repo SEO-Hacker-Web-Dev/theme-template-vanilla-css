@@ -5,8 +5,6 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -45,11 +43,15 @@
                         }
                         $title = apply_filters('the_title', $item->title, $item->ID);
                         $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
-                        $item_output = $args->before;
+                        
+                        // Convert args to object if it's an array
+                        $args = is_array($args) ? (object) $args : $args;
+                        
+                        $item_output = isset($args->before) ? $args->before : '';
                         $item_output .= '<a' . $attributes . '>';
-                        $item_output .= $args->link_before . $title . $args->link_after;
+                        $item_output .= (isset($args->link_before) ? $args->link_before : '') . $title . (isset($args->link_after) ? $args->link_after : '');
                         $item_output .= '</a>';
-                        $item_output .= $args->after;
+                        $item_output .= isset($args->after) ? $args->after : '';
                         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
                     }
                     function end_el(&$output, $item, $depth = 0, $args = null)

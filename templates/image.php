@@ -3,7 +3,7 @@
 /**
  * Image Component Template with JS fallback
  */
-$default_image = 'http://localhost:8882/wp-content/uploads/2025/08/Window-Works-5.jpg';
+$default_image = get_template_directory_uri() . '/assets/images/placeholder.png';
 
 $src    = !empty($args['src']) ? $args['src'] : $default_image;
 $alt    = isset($args['alt']) ? esc_attr($args['alt']) : '';
